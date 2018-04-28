@@ -1,2 +1,2 @@
-# Mastermind
-Learning to code with Mastermind as the project, using different techniques.
+# mastermind
+Learning to code with mastermind as the project, using different techniques.
