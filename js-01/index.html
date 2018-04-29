@@ -9,21 +9,26 @@
     <br>
     <br> Correct answer
     <br>
-    <input type="text" name="mysolution" id="facit">
+    <input type="text" name="mysolution" id="facit" value='["a", "b", "c", "c"]'>
     
     <br> Make a guess
     <br>
-    <input type="text" name="makearray" id="arrmake" onblur="newGuess()">
+    <input type="text" name="makearray" id="aguess" onblur="checkGuess()">
+    <br>
+    <br> Black and white pegs
+    <br>
+    <input type="text" name="makefacit" id="blackorwhite">
     <br>
     <p id="demo"></p>
 
     <script>
         var arr2 = [];
+        var arrcorrect = ["a", "b", "c", "c"];
+        document.getElementById("facit").innerHTML = arrcorrect.toString();
 
 
         function laggTill() {
-            arr1.push("B");
-            document.getElementById("demo").innerHTML = "arr1 = " + arr1.toString();
+            return arrcorrect.toString();
         }
 
         function taBort() {
@@ -44,18 +49,20 @@
             document.getElementById("demo").innerHTML = z;
         }
 
-        function newGuess() {
+        function makeGuess() {
             var x = document.getElementById("arrmake");
             arr1 = x.value.split(",");
-            // Check if correct
-            
+
             var txt = "";
             
             arr2.unshift(arr1); // add new elements to the beginning of arr2
 
             var k = arr2.length;
             for (k = 0; k < arr2.length; k++) {
-                    for (i =0; i < arr2[k].length; i++) {
+                    for (i = 0; i < arr2[k].length; i++) {
+                        // Is this a match?
+                        // White or black?
+
                         txt += arr2[k][i] + "\t";
                     }
                     txt += "<br>"
@@ -63,6 +70,12 @@
             txt += "<br>"
                 
             document.getElementById("demo").innerHTML = txt;
+        }
+        
+        function checkGuess() {
+            arrcorrect.findIndex
+
+
         }
     </script>
 </body>
