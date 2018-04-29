@@ -6,9 +6,15 @@
     <button onclick="taBort()">Remove</button>
     <button onclick="createArray()">Create an array</button>
     <br>
-    <br> Write array-elements separated by commas
     <br>
-    <input type="text" name="makearray" id="arrmake" onblur="getVal2()">
+    <br> Correct answer
+    <br>
+    <input type="text" name="mysolution" id="facit">
+    
+    <br> Make a guess
+    <br>
+    <input type="text" name="makearray" id="arrmake" onblur="newGuess()">
+    <br>
     <p id="demo"></p>
 
     <script>
@@ -38,28 +44,23 @@
             document.getElementById("demo").innerHTML = z;
         }
 
-        function getVal2() {
+        function newGuess() {
             var x = document.getElementById("arrmake");
             arr1 = x.value.split(",");
+            // Check if correct
+            
             var txt = "";
             
-            arr2.push(arr1);
+            arr2.unshift(arr1); // add new elements to the beginning of arr2
 
             var k = arr2.length;
-            // Build text-string backwards from last element in arr2
-            if (k > 1) {
-                for (k = 0; k < arr2.length; k++) {
-                        for (i = arr2[k].length - 1; i =1; i--) {
-                            txt += arr2[k][i] + "\t";
-                        }
-                        txt += "<br>"
+            for (k = 0; k < arr2.length; k++) {
+                    for (i =0; i < arr2[k].length; i++) {
+                        txt += arr2[k][i] + "\t";
                     }
-            } else if (k = 1) {
-                for (i = 0; i < arr2[1].length; i++) {
-                    txt += arr2[1][i] + "\t";
+                    txt += "<br>"
                 }
-                //txt += "<br>"
-            }
+            txt += "<br>"
                 
             document.getElementById("demo").innerHTML = txt;
         }
