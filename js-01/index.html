@@ -1,39 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <body>
     <button onclick="laggTill()">Add</button>
     <button onclick="taBort()">Remove</button>
     <button onclick="createArray()">Create an array</button>
-    <br><br>
-    Write array-elements separated by commas<br>
-    <input type="text" name="makearray" id="arrmake" onblur="getValue()">
+    <br>
+    <br> Write array-elements separated by commas
+    <br>
+    <input type="text" name="makearray" id="arrmake" onblur="getVal2()">
     <p id="demo"></p>
 
     <script>
-    var the_solution = [];
+        var arr2 = [];
 
-    function laggTill() {
-        the_solution.push("B");
-        document.getElementById("demo").innerHTML = "the_solution = " + the_solution.toString();
-    }
-    
-    function taBort() {
-        the_solution.pop();
-        document.getElementById("demo").innerHTML = "the_solution = " + the_solution.toString();
-    }
 
-    function getValue(){
-        var x = document.getElementById("arrmake");
-        var y = x.value.split(",");
-        var z = "typeof(y) = " + typeof(y) + "<br>" +
-        "y.length = " + y.length + "<br>";
-        
-        for(i = 0; i < y.length; i++) {
-            z += "y[" + i + "] = " + y[i] + "<br>";
+        function laggTill() {
+            arr1.push("B");
+            document.getElementById("demo").innerHTML = "arr1 = " + arr1.toString();
         }
 
-        document.getElementById("demo").innerHTML = z;
-    }
+        function taBort() {
+            arr1.pop();
+            document.getElementById("demo").innerHTML = "arr1 = " + arr1.toString();
+        }
+
+        function getValue() {
+            var x = document.getElementById("arrmake");
+            var y = x.value.split(",");
+            var z = "typeof(y) = " + typeof (y) + "<br>" +
+                "y.length = " + y.length + "<br>";
+
+            for (i = 0; i < y.length; i++) {
+                z += "y[" + i + "] = " + y[i] + "<br>";
+            }
+
+            document.getElementById("demo").innerHTML = z;
+        }
+
+        function getVal2() {
+            var x = document.getElementById("arrmake");
+            arr1 = x.value.split(",");
+            var txt = "";
+            
+            arr2.push(arr1);
+
+            var k = arr2.length;
+            // Build text-string backwards from last element in arr2
+            if (k > 1) {
+                for (k = 0; k < arr2.length; k++) {
+                        for (i = arr2[k].length - 1; i =1; i--) {
+                            txt += arr2[k][i] + "\t";
+                        }
+                        txt += "<br>"
+                    }
+            } else if (k = 1) {
+                for (i = 0; i < arr2[1].length; i++) {
+                    txt += arr2[1][i] + "\t";
+                }
+                //txt += "<br>"
+            }
+                
+            document.getElementById("demo").innerHTML = txt;
+        }
     </script>
 </body>
+
 </html>
