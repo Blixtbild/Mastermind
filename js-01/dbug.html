@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<body onload="dBug()">
+    <button onclick="">Add</button>
+    <button onclick="">Remove</button>
+    <button onclick="checkGuess()">Help me</button>
+    <br>
+    <br>
+    <br> Correct answer
+    <p id="facit"></p>
+    
+    <br> Make a guess
+    <br>
+    <p id="aguess"></p>
+    <br>
+    <br> Black and white pegs
+    <br>
+    <p id="blackwhite"></p>
+    <br>
+    <p id="demo"></p>
+
+    <script>
+        var arr2 = [];
+        var arrcorrect = ["a", "b", "c", "c"];
+        var arrguess = ["k", "c", "c", "a"];
+        //var arrblackwhite = ["-", "-", "-", "-"];
+        var arrblackwhite = [];
+
+        document.getElementById("facit").innerHTML = arrcorrect.toString();
+        document.getElementById("aguess").innerHTML = arrguess.toString();
+        document.getElementById("blackwhite").innerHTML = arrblackwhite.toString();
+        checkGuess();
+
+        function dBug() {
+            alert('dbug');
+        }
+        
+        function getValue() {
+            var x = document.getElementById("arrmake");
+            var y = x.value.split(",");
+            var z = "typeof(y) = " + typeof (y) + "<br>" +
+                "y.length = " + y.length + "<br>";
+
+            for (i = 0; i < y.length; i++) {
+                z += "y[" + i + "] = " + y[i] + "<br>";
+            }
+
+            document.getElementById("demo").innerHTML = z;
+        }
+
+        function makeGuess() {
+            var x = document.getElementById("arrmake");
+            arr1 = x.value.split(",");
+
+            var txt = "";
+
+            arr2.unshift(arr1); // add new elements to the beginning of arr2
+
+            var k = arr2.length;
+            for (k = 0; k < arr2.length; k++) {
+                for (i = 0; i < arr2[k].length; i++) {
+                    // Is this a match?
+                    // White or black?
+
+                    txt += arr2[k][i] + "\t";
+                }
+                txt += "<br>";
+            }
+            txt += "<br>";
+
+            document.getElementById("demo").innerHTML = txt;
+        }
+
+        function checkGuess() {
+            //var arrwhite = "";
+
+            for (i = 0; i < arrguess.length; i++) {
+                // Exact match
+                if (arrcorrect[i] == arrguess[i]) {
+                    arrguess[i] += "-black";
+                    arrblackwhite[i] = "black";
+                }
+            }
+
+        }
+         /*    for (i = 0; i < arrguess.length; i++) {
+                // Matching color
+                var t = arrcorrect.findIndex(arrguess[i]);
+                if (t >= 0) {
+                    arrguess[i] += "-white";
+                    arrblackwhite[i] = "white";
+                }
+            }
+          */   document.getElementById("blackwhite").innerHTML = arrblackwhite.toString();
+    </script>
+</body>
+
+</html>
