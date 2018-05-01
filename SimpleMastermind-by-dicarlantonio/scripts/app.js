@@ -11,8 +11,8 @@ var colors = [
     'blue', 'purple', 'orange', 'black'
 ];
 
-for(var i = 0; i < 4; ++i) {
-    var randomNum = Math.floor(Math.random() * 7);
+for(var i = 0; i < 4; i++) {
+    var randomNum = Math.floor(Math.random() * 8);
     
     randomPattern[i] = colors[randomNum];
 }
@@ -48,12 +48,12 @@ var gameOver = false;
 
 // for debugging purposes
 //alert(randomPattern[0] + ' ' + randomPattern[1] + ' ' + randomPattern[2] + ' '+ randomPattern[3]);
-//var dbugText = randomPattern[0] + ' ' + randomPattern[1] + ' ' + randomPattern[2] + ' '+ randomPattern[3];
-alert(testFunktion());
+var dbugText = randomPattern[0] + ' ' + randomPattern[1] + ' ' + randomPattern[2] + ' '+ randomPattern[3];
+//alert(testFunktion());
 
 document.getElementById("dbugInfo").innerHTML = dbugText;
 
-for(var row = 0; row < numRows; ++row) {
+for(var row = 0; row < numRows; row++) {
     for(var col = 0; col < numCols; ++col) {
         mainBoardElements[row][col] = 
             document.getElementById("square" + row + col);
@@ -74,14 +74,14 @@ function resetGame() {
 	
 	// reset both patterns
 	userPattern = [];
-	for(var i = 0; i < 4; ++i) {
-			var randomNum = Math.floor(Math.random() * 7);
+	for(var i = 0; i < 4; i++) {
+			var randomNum = Math.floor(Math.random() * 8);
 		
 			randomPattern[i] = colors[randomNum];
 	}
 	
 	// clear the board
-	for(var row = 0; row < numRows; ++row) {
+	for(var row = 0; row < numRows; row++) {
 		for(var col = 0; col < numCols; ++col) {
 			mainBoardElements[row][col].style.backgroundColor = 'white';
 			keySquareElements[row][col].style.backgroundColor = 'white';
@@ -95,8 +95,8 @@ function resetGame() {
 
 // check users/AI made pattern
 function patternMatch(pattern) {
-    for(var i = 0; i < numCols; ++i) {
-        if(pattern[i] !== randomPattern[i]) {
+    for(var i = 0; i < numCols; i++) {
+        if(pattern[i] != randomPattern[i]) {
             return false;
         }
     }
@@ -111,7 +111,7 @@ function updateKey(pattern, row) {
 
     // keep track of what has been checked
     var hasBeenChecked = [false, false, false, false]; 
-    for(var i = 0; i < numCols; ++i) {
+    for(var i = 0; i < numCols; i++) {
         if(pattern[i] === randomPattern[i]) {
             ++correctPosition;
             hasBeenChecked[i] = true;
@@ -121,7 +121,8 @@ function updateKey(pattern, row) {
     // check for elements not in same position 
     for(var f = 0; f < numCols; ++f) {
         for(var j = 0; j < numCols; ++j) {
-            if(pattern[f] === randomPattern[j] && !hasBeenChecked[j] && f !== j) {
+            //if(pattern[f] === randomPattern[j] && !hasBeenChecked[j] && f !== j) {
+                if(pattern[f] == randomPattern[j] && !hasBeenChecked[j] && f != j) {
                 ++correctColor;
             }
         }
@@ -190,12 +191,12 @@ function setSquareColor() {
         }
 
         currentCol = 0;
-        ++currentRow;
+        currentRow++;
         if(currentRow > 9) {
             gameOver = true;
          }
     }
-	
+    
 	if(gameOver) {
 		currentRow = 0;
 		currentCol = 0;
@@ -210,7 +211,7 @@ function undoPrevious() {
 
 // adding listeners
 undoButton.addEventListener('click', undoPrevious);
-for(var i = 0; i < 8; ++i) {
+for(var i = 0; i < 8; i++) {
     buttons[i].addEventListener('click', setSquareColor);
 }
 
@@ -221,10 +222,10 @@ function testFunktion() {
     for (jp = 0; jp < 100; jp++) {
         var liten = [];
         for (pj = 0; pj < 4; pj++) {
-            liten.push(Math.floor(Math.random() * 7));
+            liten.push(Math.floor(Math.random() * 8));
         }
         stor[jp] = liten;
-        txt2 += liten.toString() + " <br>";
+        txt2 += liten.toString() + "\n";
     }
     return txt2;
 }
