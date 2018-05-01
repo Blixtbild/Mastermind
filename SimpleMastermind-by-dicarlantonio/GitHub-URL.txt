@@ -1,0 +1,12 @@
+Found this project on
+https://github.com/jdicarlantonio/SimpleMastermind
+
+
+
+- launch.json -
+
+"name": "Launch index.html (disable sourcemaps)",
+"type": "chrome",
+"request": "launch",
+"sourceMaps": false,
+"file": "${workspaceFolder}/index.html"
