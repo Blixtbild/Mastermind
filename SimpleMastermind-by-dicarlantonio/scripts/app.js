@@ -47,7 +47,11 @@ var patternMatchFound = false;
 var gameOver = false;
 
 // for debugging purposes
-alert(randomPattern[0] + ' ' + randomPattern[1] + ' ' + randomPattern[2] + ' '+ randomPattern[3]);
+//alert(randomPattern[0] + ' ' + randomPattern[1] + ' ' + randomPattern[2] + ' '+ randomPattern[3]);
+//var dbugText = randomPattern[0] + ' ' + randomPattern[1] + ' ' + randomPattern[2] + ' '+ randomPattern[3];
+alert(testFunktion());
+
+document.getElementById("dbugInfo").innerHTML = dbugText;
 
 for(var row = 0; row < numRows; ++row) {
     for(var col = 0; col < numCols; ++col) {
@@ -208,4 +212,19 @@ function undoPrevious() {
 undoButton.addEventListener('click', undoPrevious);
 for(var i = 0; i < 8; ++i) {
     buttons[i].addEventListener('click', setSquareColor);
+}
+
+function testFunktion() {
+    var stor = [];
+    var txt2 = "";
+    
+    for (jp = 0; jp < 100; jp++) {
+        var liten = [];
+        for (pj = 0; pj < 4; pj++) {
+            liten.push(Math.floor(Math.random() * 7));
+        }
+        stor[jp] = liten;
+        txt2 += liten.toString() + " <br>";
+    }
+    return txt2;
 }
